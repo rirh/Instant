@@ -18,7 +18,7 @@ from django.urls import path
 from routes.main import get_ip
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path(r'index/', get_ip),
+    path('', get_ip),
 
 
 ]
