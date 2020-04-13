@@ -25,7 +25,7 @@ SECRET_KEY = '=-gt@d_n&ps#g2qs!&9^(!+64j^c&1fx#(3+#@cw-&3ns-$3ju'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['crypto.huzhihui.org.cn', 'localhost', '127.0.0.1', ]
 
 
 # Application definition
