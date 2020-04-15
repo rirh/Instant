@@ -8,7 +8,7 @@ import time
 gitconfig = {
     'cwd': '.',
     'git': {
-        'github': ['git@github.com:Ctleryes/Instant.git', 'master'],
+        'github': ['https://github.com/Ctleryes/Instant.git', 'master'],
         # 'coding': ['git@git.coding.net:Akkuman/Akkuman.git', 'coding-pages'],
     }
 }
