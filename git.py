@@ -43,7 +43,7 @@ def main():
 
     # push to every remote repo
     for k, v in gitconfig['git'].items():
-        subprocess.check_call(['git', 'push', k, 'master:%s' % v[1]])
+        subprocess.check_call(['git', 'push'])
 
 
 if __name__ == '__main__':
