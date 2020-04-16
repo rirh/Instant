@@ -11,6 +11,7 @@ python3 manage.py runserver
 ```python
 # 启动 uwsgi --ini uwsgi.ini 
 # 停止 uwsgi --stop uwsgi.pid
+# 重启 uwsgi --reload uwsgi.pid 
 ```
 
 
