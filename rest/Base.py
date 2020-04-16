@@ -2,6 +2,7 @@
 from datetime import datetime
 from time import time
 from rest_framework import serializers
+from rest_framework.renderers import JSONRenderer
 
 
 class Timer:
@@ -15,3 +16,7 @@ class Timer:
 class TimerSerializer(serializers.Serializer):
     iso = serializers.DateTimeField()
     epoch = serializers.FloatField()
+
+timer = Timer()
+serializer = TimerSerializer(timer)
+time = JSONRenderer().render(serializer.data)

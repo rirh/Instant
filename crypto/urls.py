@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from routes.main import time
+from routes.main import time, add_list, delete_list, update_list, query_list
+
 
 urlpatterns = [
     # 分别是两个必选参数：route、view 和两个可选参数：kwargs、name。
@@ -28,6 +29,10 @@ urlpatterns = [
     # '''
     # path('admin/', admin.site.urls),
     path('', time),
+    path(r'add_list/', add_list),
+    path(r'delete_list/', delete_list),
+    path(r'update_list/', update_list),
+    path(r'query_list/', query_list),
 
 
 ]
