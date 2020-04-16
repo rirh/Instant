@@ -59,6 +59,13 @@ python3 manage.py runserver
    学习admin的配置和使用
 
    ```
+6. 静态文件配置
+
+   ```
+   target:
+   配置静态文件访问
+
+   ```
 
    
 
