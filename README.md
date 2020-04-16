@@ -1,5 +1,20 @@
 ##### 微信加密货币交易所
 
+##### Start  server local
+
+```python
+python3 manage.py runserver
+```
+
+##### Start  server cloud
+
+```python
+# 启动 uwsgi --ini uwsgi.ini 
+# 停止 uwsgi --stop uwsgi.pid
+```
+
+
+
 1. 服务端部署项目
 
    ```

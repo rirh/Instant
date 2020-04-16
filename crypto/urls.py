@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from routes.main import get_ip
+from routes.main import time
 
 urlpatterns = [
     # 分别是两个必选参数：route、view 和两个可选参数：kwargs、name。
@@ -27,7 +27,7 @@ urlpatterns = [
     # name: 用来反向获取 URL。
     # '''
     # path('admin/', admin.site.urls),
-    path('', get_ip),
+    path('', time),
 
 
 ]
