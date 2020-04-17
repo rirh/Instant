@@ -17,6 +17,4 @@ class TimerSerializer(serializers.Serializer):
     iso = serializers.DateTimeField()
     epoch = serializers.FloatField()
 
-timer = Timer()
-serializer = TimerSerializer(timer)
-time = JSONRenderer().render(serializer.data)
+

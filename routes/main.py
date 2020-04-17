@@ -11,7 +11,10 @@ import json
 
 @api_view(['get'])
 def time(request):
-    return HttpResponse(rest.base.time)
+    timer = rest.base.Timer()
+    serializer = rest.base.TimerSerializer(timer)
+    time = JSONRenderer().render(serializer.data)
+    return HttpResponse(time)
 
 
 @api_view(['post'])
