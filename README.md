@@ -14,6 +14,14 @@ python3 manage.py runserver
 # 重启 uwsgi --reload uwsgi.pid 
 ```
 
+##### django cmd
+
+```python
+# 进入项目交互的命令行 python manage.py shell
+# 启动服务 python3 manage.py runserver
+# 重启 uwsgi --reload uwsgi.pid 
+```
+
 
 
 1. 服务端部署项目
