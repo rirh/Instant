@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.renderers import JSONRenderer
-import rest
+import rest.base
 # import rest.base import Timer
 # import rest.base import TimerSerializer
 import json
