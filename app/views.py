@@ -1,13 +1,13 @@
-
+from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.renderers import JSONRenderer
-import rest.base
+from rest import base
 # import rest.base import Timer
 # import rest.base import TimerSerializer
 import json
-import django.db 
+import django.db
 
 
 # class Person(models.Model):
@@ -18,8 +18,8 @@ import django.db
 
 @api_view(['get'])
 def time(request):
-    timer = rest.base.Timer()
-    serializer = rest.base.TimerSerializer(timer)
+    timer = base.Timer()
+    serializer = base.TimerSerializer(timer)
     time = JSONRenderer().render(serializer.data)
     return HttpResponse(time)
 

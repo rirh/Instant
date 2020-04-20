@@ -20,6 +20,10 @@ python3 manage.py runserver
 # 进入项目交互的命令行 python manage.py shell
 # 启动服务 python3 manage.py runserver
 # 重启 uwsgi --reload uwsgi.pid 
+# 检查项目中的错误 python manage.py check
+# 为改动创建迁移记录 python manage.py makemigrations
+# 将操作同步到数据库 python manage.py migrate
+
 ```
 
 
