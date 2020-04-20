@@ -57,7 +57,8 @@ def query_list(request, question_id=0):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
-@api_view(['get', 'post', 'put', 'delete', 'patch'])
-def page_not_font(request):
-    resp = {'errorcode': 404, 'detail': 'are you serious???'}
-    return HttpResponse(json.dumps(resp), content_type="application/json")
+# @api_view(['get', 'post', 'put', 'delete', 'patch'])
+# def page_not_font(request):
+#     resp = {'errorcode': 404, 'detail': 'are you serious???'}
+#     return HttpResponse(json.dumps(resp), content_type="application/json")
+

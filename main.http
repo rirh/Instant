@@ -36,3 +36,12 @@ content-type: application/json
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
 
+###
+POST http://127.0.0.1:8000/app/post_list/  HTTP/1.1
+content-type: application/json
+
+{
+    "name": "小花",
+    "sex": 0,
+    "age":12
+}

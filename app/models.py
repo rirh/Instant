@@ -5,6 +5,19 @@ from django.db import models
 
 # Create your models here.
 
+
+class Crypto(models.Model):
+    # id = models.AutoField(default=0)
+    name = models.CharField(max_length=24)
+    age = models.IntegerField(default=0)
+    sex = models.IntegerField(default=1)
+
+    def __unicode__(self):
+        return self.name,\
+            self.age,\
+            self.sex
+
+
 class Server_List(models.Model):
     name = models.CharField(max_length=64)
     host = models.CharField(max_length=256, null=True)
@@ -21,17 +34,18 @@ class Server_List(models.Model):
 
     def __unicode__(self):
         return self.name, \
-               self.host, \
-               self.lhost, \
-               self.port, \
-               self.user, \
-               self.pw, \
-               self.db, \
-               self.version, \
-               self.upd, \
-               self.upd, \
-               self.exchange, \
-               self.symbol
+            self.host, \
+            self.lhost, \
+            self.port, \
+            self.user, \
+            self.pw, \
+            self.db, \
+            self.version, \
+            self.upd, \
+            self.upd, \
+            self.exchange, \
+            self.symbol
+
 
 class Exchange_List(models.Model):
     exchange_type = models.CharField(max_length=1)
@@ -46,14 +60,14 @@ class Exchange_List(models.Model):
 
     def __unicode__(self):
         return self.exchange_type, \
-               self.exchange, \
-               self.default_brief, \
-               self.key1_name, \
-               self.key2_name, \
-               self.key3_name, \
-               self.t_type, \
-               self.get_key_url, \
-               self.img_url
+            self.exchange, \
+            self.default_brief, \
+            self.key1_name, \
+            self.key2_name, \
+            self.key3_name, \
+            self.t_type, \
+            self.get_key_url, \
+            self.img_url
 
 # class User(models.Model):
 #     # 用户表
@@ -91,6 +105,7 @@ class Exchange_List(models.Model):
 #         verbose_name = '用户'
 #         verbose_name_plural = '用户'
 
+
 class User2(models.Model):
     # 用户表
     user = models.CharField(max_length=16)
@@ -112,38 +127,41 @@ class User2(models.Model):
 
     def __unicode__(self):
         return self.user, \
-               self.user_brief, \
-               self.nickname, \
-               self.username, \
-               self.district, \
-               self.mobile, \
-               self.email, \
-               self.type, \
-               self.date_s, \
-               self.date_e, \
-               self.i_code, \
-               self.password, \
-               self.log_user, \
-               self.mb, \
-               self.c_time
+            self.user_brief, \
+            self.nickname, \
+            self.username, \
+            self.district, \
+            self.mobile, \
+            self.email, \
+            self.type, \
+            self.date_s, \
+            self.date_e, \
+            self.i_code, \
+            self.password, \
+            self.log_user, \
+            self.mb, \
+            self.c_time
 
     class Meta:
         ordering = ['c_time']
         verbose_name = '用户'
         verbose_name_plural = '用户'
 
+
 class User_Code(models.Model):
     # user
-    user = models.CharField(primary_key=True, max_length=40)    # type TEL, EMAIL
+    user = models.CharField(
+        primary_key=True, max_length=40)    # type TEL, EMAIL
     dev = models.CharField(max_length=6)  # MOBILE, EMAIL
     code = models.CharField(max_length=8)
     c_time = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.user, \
-               self.dev, \
-               self.code, \
-               self.c_time
+            self.dev, \
+            self.code, \
+            self.c_time
+
 
 class User_Server(models.Model):
     # 用户服务器对照表
@@ -162,15 +180,16 @@ class User_Server(models.Model):
 
     def __unicode__(self):
         return self.user, \
-               self.s_name, \
-               self.server, \
-               self.host, \
-               self.date_s, \
-               self.date_e, \
-               self.log_user, \
-               self.version, \
-               self.c_time, \
-               self.token
+            self.s_name, \
+            self.server, \
+            self.host, \
+            self.date_s, \
+            self.date_e, \
+            self.log_user, \
+            self.version, \
+            self.c_time, \
+            self.token
+
 
 class dealer(models.Model):
     dealer = models.CharField(max_length=6)
@@ -186,15 +205,16 @@ class dealer(models.Model):
 
     def __unicode__(self):
         return self.dealer, \
-               self.mb, \
-               self.name, \
-               self.city, \
-               self.district, \
-               self.mobile, \
-               self.email, \
-               self.desc, \
-               self.date_s, \
-               self.date_e
+            self.mb, \
+            self.name, \
+            self.city, \
+            self.district, \
+            self.mobile, \
+            self.email, \
+            self.desc, \
+            self.date_s, \
+            self.date_e
+
 
 class Workorder(models.Model):
     # 用户表
@@ -207,17 +227,19 @@ class Workorder(models.Model):
 
     def __unicode__(self):
         return self.id, \
-               self.user, \
-               self.type, \
-               self.content, \
-               self.status, \
-               self.c_time
+            self.user, \
+            self.type, \
+            self.content, \
+            self.status, \
+            self.c_time
+
 
 class Stable_Asset(models.Model):
     asset = models.CharField(max_length=10, primary_key=True)
 
     def __unicode__(self):
         return self.asset
+
 
 class Symbol_Info(models.Model):
     id = models.CharField(max_length=40, primary_key=True)
@@ -228,20 +250,21 @@ class Symbol_Info(models.Model):
     quoteAsset = models.CharField(max_length=20, null=True)
     tickSize = models.IntegerField(default=2)  # 价格小数位
     minQty = models.IntegerField(default=8)    # 交易数量小数位
-    minNotional = models.FloatField(default=0) # 最小成交金额
+    minNotional = models.FloatField(default=0)  # 最小成交金额
     update_time = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.id, \
-               self.exchange, \
-               self.symbol, \
-               self.symbol_ori, \
-               self.baseAsset, \
-               self.quoteAsset, \
-               self.tickSize, \
-               self.minQty, \
-               self.minNotional, \
-               self.update_time
+            self.exchange, \
+            self.symbol, \
+            self.symbol_ori, \
+            self.baseAsset, \
+            self.quoteAsset, \
+            self.tickSize, \
+            self.minQty, \
+            self.minNotional, \
+            self.update_time
+
 
 class Symbol_Info2(models.Model):
     id = models.CharField(max_length=40, primary_key=True)
@@ -261,19 +284,20 @@ class Symbol_Info2(models.Model):
 
     def __unicode__(self):
         return self.id, \
-               self.exchange, \
-               self.t_type, \
-               self.symbol, \
-               self.symbol_ori, \
-               self.baseAsset, \
-               self.quoteAsset, \
-               self.tickSize, \
-               self.minQty, \
-               self.minNotional, \
-               self.contract_val, \
-               self.listing, \
-               self.delivery, \
-               self.update_time
+            self.exchange, \
+            self.t_type, \
+            self.symbol, \
+            self.symbol_ori, \
+            self.baseAsset, \
+            self.quoteAsset, \
+            self.tickSize, \
+            self.minQty, \
+            self.minNotional, \
+            self.contract_val, \
+            self.listing, \
+            self.delivery, \
+            self.update_time
+
 
 class Ping(models.Model):
     user = models.CharField(max_length=16)
@@ -287,22 +311,25 @@ class Ping(models.Model):
 
     def __unicode__(self):
         return self.user, \
-               self.host, \
-               self.timer, \
-               self.live, \
-               self.task, \
-               self.market, \
-               self.mem_pct, \
-               self.cpu_pct
+            self.host, \
+            self.timer, \
+            self.live, \
+            self.task, \
+            self.market, \
+            self.mem_pct, \
+            self.cpu_pct
+
 
 class Server_Monitor(models.Model):
     host = models.CharField(max_length=40, primary_key=True)
     live = models.IntegerField(default=0)
     gap = models.IntegerField(default=600)
+
     def __unicode__(self):
         return self.host, \
-               self.live, \
-               self.gap
+            self.live, \
+            self.gap
+
 
 class User_Opt_List(models.Model):
     user = models.CharField(max_length=16)
@@ -330,26 +357,27 @@ class User_Opt_List(models.Model):
 
     def __unicode__(self):
         return self.user, \
-               self.exchange, \
-               self.account, \
-               self.t_type, \
-               self.symbol, \
-               self.symbol_ori, \
-               self.baseAsset, \
-               self.quoteAsset, \
-               self.top, \
-               self.marked, \
-               self.theLast, \
-               self.sequence, \
-               self.alert, \
-               self.alert_spec, \
-               self.alert_type, \
-               self.alert_value, \
-               self.tickSize, \
-               self.minQty, \
-               self.minNotional, \
-               self.contract_val, \
-               self.order
+            self.exchange, \
+            self.account, \
+            self.t_type, \
+            self.symbol, \
+            self.symbol_ori, \
+            self.baseAsset, \
+            self.quoteAsset, \
+            self.top, \
+            self.marked, \
+            self.theLast, \
+            self.sequence, \
+            self.alert, \
+            self.alert_spec, \
+            self.alert_type, \
+            self.alert_value, \
+            self.tickSize, \
+            self.minQty, \
+            self.minNotional, \
+            self.contract_val, \
+            self.order
+
 
 class Symbol_Order(models.Model):
     exchange = models.CharField(max_length=20)
@@ -367,17 +395,18 @@ class Symbol_Order(models.Model):
 
     def __unicode__(self):
         return self.exchange, \
-               self.t_type, \
-               self.symbol, \
-               self.idx, \
-               self.price, \
-               self.q_price, \
-               self.symbol_ori, \
-               self.baseAsset, \
-               self.quoteAsset, \
-               self.tickSize, \
-               self.minQty, \
-               self.minNotional
+            self.t_type, \
+            self.symbol, \
+            self.idx, \
+            self.price, \
+            self.q_price, \
+            self.symbol_ori, \
+            self.baseAsset, \
+            self.quoteAsset, \
+            self.tickSize, \
+            self.minQty, \
+            self.minNotional
+
 
 class Symbol_Market(models.Model):
     exchange = models.CharField(max_length=20)
@@ -388,10 +417,11 @@ class Symbol_Market(models.Model):
 
     def __unicode__(self):
         return self.exchange, \
-               self.t_type, \
-               self.symbol, \
-               self.idx, \
-               self.server
+            self.t_type, \
+            self.symbol, \
+            self.idx, \
+            self.server
+
 
 class User_Vol_Inbound(models.Model):
     UVIId = models.BigIntegerField(primary_key=True)
@@ -420,27 +450,28 @@ class User_Vol_Inbound(models.Model):
 
     def __unicode__(self):
         return self.UVIId, \
-               self.UVIType, \
-               self.UVOId, \
-               self.user, \
-               self.host, \
-               self.docId, \
-               self.type, \
-               self.status, \
-               self.exchange, \
-               self.account, \
-               self.t_type, \
-               self.symbol, \
-               self.ord_num, \
-               self.end_time, \
-               self.exe_qty, \
-               self.exe_price, \
-               self.exe_vol, \
-               self.exe_fee, \
-               self.exe_fee_u, \
-               self.quote_price, \
-               self.fee_rate, \
-               self.fee_price
+            self.UVIType, \
+            self.UVOId, \
+            self.user, \
+            self.host, \
+            self.docId, \
+            self.type, \
+            self.status, \
+            self.exchange, \
+            self.account, \
+            self.t_type, \
+            self.symbol, \
+            self.ord_num, \
+            self.end_time, \
+            self.exe_qty, \
+            self.exe_price, \
+            self.exe_vol, \
+            self.exe_fee, \
+            self.exe_fee_u, \
+            self.quote_price, \
+            self.fee_rate, \
+            self.fee_price
+
 
 class Symbol_flag(models.Model):
     exchange = models.CharField(max_length=20)
@@ -449,8 +480,9 @@ class Symbol_flag(models.Model):
 
     def __unicode__(self):
         return self.exchange, \
-               self.symbol, \
-               self.margin
+            self.symbol, \
+            self.margin
+
 
 class Exchange_Account(models.Model):
     user = models.CharField(max_length=16)
@@ -465,14 +497,14 @@ class Exchange_Account(models.Model):
 
     def __unicode__(self):
         return self.user, \
-               self.exchange, \
-               self.account, \
-               self.t_type, \
-               self.acct_desc, \
-               self.key1, \
-               self.key2, \
-               self.key3, \
-               self.status
+            self.exchange, \
+            self.account, \
+            self.t_type, \
+            self.acct_desc, \
+            self.key1, \
+            self.key2, \
+            self.key3, \
+            self.status
 
 
 # class Calory_Binance(models.Model):
@@ -598,4 +630,3 @@ class Exchange_Account(models.Model):
 #                self.close, \
 #                self.volumne, \
 #                self.qvol
-

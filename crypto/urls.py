@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
+from django.shortcuts import render
 from routes.main import time, add_list, delete_list, update_list, query_list, page_not_font
 from django.views.static import serve
+import app
 
 urlpatterns = [
     # 分别是两个必选参数：route、view 和两个可选参数：kwargs、name。
@@ -37,7 +39,6 @@ urlpatterns = [
     path(r'update_list/', update_list),
     path(r'query_list/', query_list),
     path(r'<int:question_id>/vote/', query_list),
-    path('*', page_not_font),
-
-
+    path(r'app/', include(app.urls))
 ]
+
