@@ -13,13 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+# from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
-from django.shortcuts import render
-from routes.main import time, add_list, delete_list, update_list, query_list, page_not_font
 from django.views.static import serve
-import app
+from app import urls, views
 
 urlpatterns = [
     # 分别是两个必选参数：route、view 和两个可选参数：kwargs、name。
@@ -33,12 +31,6 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('', time),
     path(r'uploads/*', serve, {"document_root": settings.MEDIA_ROOT, }),
-    path('', include('app.urls')),
-    path(r'add_list/', add_list),
-    path(r'delete_list/', delete_list),
-    path(r'update_list/', update_list),
-    path(r'query_list/', query_list),
-    path(r'<int:question_id>/vote/', query_list),
-    path(r'app/', include(app.urls))
+    path(r'app/', include(urls)),
+    path(r'', views.time)
 ]
-
