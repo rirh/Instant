@@ -2,7 +2,7 @@ GET https://crypto.huzhihui.org.cn HTTP/1.1
 
 ###
 
-POST    http://127.0.0.1:8000/add_list/ HTTP/1.1
+POST    http://127.0.0.1:8000/app/add_list/ HTTP/1.1
 content-type: application/json
 
 {
@@ -11,7 +11,7 @@ content-type: application/json
 }
 ###
 
-DELETE http://127.0.0.1:8000/delete_list/ HTTP/1.1
+DELETE http://127.0.0.1:8000/app/delete_list/ HTTP/1.1
 content-type: application/json
 
 {
@@ -20,7 +20,7 @@ content-type: application/json
 }
 
 ###
-PUT http://127.0.0.1:8000/update_list/ HTTP/1.1
+PUT http://127.0.0.1:8000/app/update_list/ HTTP/1.1
 content-type: application/json
 
 {
@@ -28,7 +28,7 @@ content-type: application/json
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
 ###
-GET  http://127.0.0.1:8000/query_list/ HTTP/1.1
+GET  http://127.0.0.1:8000/app/query_list/ HTTP/1.1
 content-type: application/json
 
 {
@@ -44,4 +44,11 @@ content-type: application/json
     "name": "小花",
     "sex": 0,
     "age":12
+}
+###
+POST http://127.0.0.1:8000/app/query_list/  HTTP/1.1
+content-type: application/json
+
+{
+    "name": "小花"
 }

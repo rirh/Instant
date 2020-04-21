@@ -7,7 +7,7 @@ from django.db import models
 
 
 class Crypto(models.Model):
-    # id = models.AutoField(default=0)
+    # id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=24)
     age = models.IntegerField(default=0)
     sex = models.IntegerField(default=1)
