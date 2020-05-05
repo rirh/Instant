@@ -52,3 +52,20 @@ content-type: application/json
 {
     "name": "小花"
 }
+
+###
+POST http://127.0.0.1:8000/app/update_list/  HTTP/1.1
+content-type: application/json
+
+{
+    "name": "小花", 
+    "age": 11
+}
+###
+DELETE  http://127.0.0.1:8000/app/update_list/  HTTP/1.1
+content-type: application/json
+
+{
+    "name": "小花", 
+    "age": 11
+}
