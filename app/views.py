@@ -4,12 +4,15 @@ from rest_framework import status
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.renderers import JSONRenderer
 from rest import base
+
 # import rest.base import Timer
 # import rest.base import TimerSerializer
 import json
 import django.db
 
-
+api_key = "105efe25-6f5e-4335-83c6-a11409af7a6b"
+secret_key = "A877DAEA07C3C023C08789EE45B2C454"
+passphrase = "0x0001"
 # class Person(models.Model):
 #     first_name = django.db.models.CharField(max_length=30)
 #     last_name = django.db.models.CharField(max_length=30)
@@ -61,4 +64,3 @@ def query_list(request, question_id=0):
 # def page_not_font(request):
 #     resp = {'errorcode': 404, 'detail': 'are you serious???'}
 #     return HttpResponse(json.dumps(resp), content_type="application/json")
-
