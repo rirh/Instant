@@ -5,11 +5,18 @@ from rest_framework.decorators import api_view, throttle_classes
 import json
 from app.models import Crypto
 import exchange.okex.spot_api as spot
-
-
+from dwebsocket.decorators import accept_websocket, require_websocket
 api_key = "105efe25-6f5e-4335-83c6-a11409af7a6b"
 secret_key = "A877DAEA07C3C023C08789EE45B2C454"
 passphrase = "0x0001"
+
+@accept_websocket
+def test_websocket(request):
+    if request.is_websocket():
+        dit = {
+            'time': 1
+        }
+        request.websocket.send(json.dumps(dit))
 
 
 @api_view(['get'])
@@ -17,7 +24,6 @@ def get_ticker(request):
     spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
     result = spotAPI.get_ticker()
     return HttpResponse(json.dumps(result), content_type="application/json")
-
 
 
 @api_view(['get'])
