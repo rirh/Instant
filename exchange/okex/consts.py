@@ -1,6 +1,7 @@
 
 # http header
 API_URL = 'https://www.okex.me'
+# API_URL = 'https://www.okex.com'
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'OK-ACCESS-KEY'
 OK_ACCESS_SIGN = 'OK-ACCESS-SIGN'

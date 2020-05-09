@@ -13,9 +13,9 @@ passphrase = "0x0001"
 
 
 @api_view(['get'])
-def get_coin_info(request):
+def get_ticker(request):
     spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
-    result = spotAPI.get_coin_info()
+    result = spotAPI.get_ticker()
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 

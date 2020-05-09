@@ -62,7 +62,7 @@ if __name__ == '__main__':
 # 币币API
     spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
     # 币币账户信息 （20次/2s）
-    # result = spotAPI.get_account_info()
+    result = spotAPI.get_account_info()
     # 单一币种账户信息 （20次/2s）
     # result = spotAPI.get_coin_account_info('')
     # 账单流水查询 （10次/2s）
@@ -101,7 +101,7 @@ if __name__ == '__main__':
     # 获取委托单列表 （20次/2s）
     # result = spotAPI.get_order_algos('', '', status='', algo_id='')
     # 公共-获取币对信息 （20次/2s）
-    result = spotAPI.get_coin_info()
+    # result = spotAPI.get_coin_info()
     # 公共-获取深度数据 （20次/2s）
     # result = spotAPI.get_depth('', '')
     # 公共-获取全部ticker信息 （20次/2s）
