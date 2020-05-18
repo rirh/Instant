@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from app.app import find_app, post_app, query_app, update_app, get_ticker
+from app.app import find_app, post_app, query_app, update_app, get_all_ticker, get_specific_ticker, get_kline, drug_connect
 from app.views import add_list, delete_list, update_list, query_list
 
 urlpatterns = [
@@ -11,7 +11,10 @@ urlpatterns = [
     path(r'add_list/', add_list),
     path(r'delete_list/', delete_list),
     path(r'update_list/', update_app),
-    path(r'get_ticker/', get_ticker),
+    path(r'get_all_ticker/', get_all_ticker),
+    path(r'get_specific_ticker/', get_specific_ticker),
+    path(r'get_kline/', get_kline),
     # path(r'query_list/', query_list),
     path(r'<int:question_id>/vote/', query_list),
+    path(r'drug_connect/', drug_connect),
 ]

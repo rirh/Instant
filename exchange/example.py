@@ -62,7 +62,7 @@ if __name__ == '__main__':
 # 币币API
     spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
     # 币币账户信息 （20次/2s）
-    result = spotAPI.get_account_info()
+    # result = spotAPI.get_account_info()
     # 单一币种账户信息 （20次/2s）
     # result = spotAPI.get_coin_account_info('')
     # 账单流水查询 （10次/2s）
@@ -111,7 +111,7 @@ if __name__ == '__main__':
     # 公共-获取成交数据 （20次/2s）
     # result = spotAPI.get_deal('', limit='')
     # 公共-获取K线数据 （20次/2s）
-    # result = spotAPI.get_kline('', '')
+    result = spotAPI.get_kline('BTC-USDT', '')
 
 # level api test
 # 币币杠杆API

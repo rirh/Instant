@@ -69,3 +69,19 @@ content-type: application/json
     "name": "小花", 
     "age": 11
 }
+###
+
+GET  http://127.0.0.1:8000/app/get_specific_ticker/ HTTP/1.1
+content-type: application/json
+
+{
+   "instrument_id":"BTC-USDT"
+}
+###
+
+GET  http://127.0.0.1:8000/app/get_kline?instrument_id=BTC-USDT HTTP/1.1
+content-type: application/json
+
+{
+   "instrument_id":"BTC-USDT"
+}

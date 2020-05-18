@@ -1,3 +1,4 @@
+from app.ak import api_key, secret_key, passphrase
 from django.core.serializers import serialize
 from django.http import HttpResponse
 from rest_framework import status
@@ -5,24 +6,55 @@ from rest_framework.decorators import api_view, throttle_classes
 import json
 from app.models import Crypto
 import exchange.okex.spot_api as spot
-from dwebsocket.decorators import accept_websocket, require_websocket
-api_key = "105efe25-6f5e-4335-83c6-a11409af7a6b"
-secret_key = "A877DAEA07C3C023C08789EE45B2C454"
-passphrase = "0x0001"
-
+import time
+from urllib import parse
+# api_key = "105efe25-6f5e-4335-83c6-a11409af7a6b"
+# secret_key = "A877DAEA07C3C023C08789EE45B2C454"
+# passphrase = "0x0001"
+from dwebsocket.decorators import accept_websocket
 @accept_websocket
-def test_websocket(request):
+def drug_connect(request):
     if request.is_websocket():
-        dit = {
-            'time': 1
-        }
-        request.websocket.send(json.dumps(dit))
+        try:
+            messages = {
+                'time': time.strftime('%Y.%m.%d %H:%M:%S', time.localtime(time.time())),
+                'msg': 'send %d times!' % i,
+            }
+            msg = json.dumps(messages)
+            request.websocket.send(msg)
+        except Exception as e:
+            try:
+                request.websocket.close()
+                return
+            except:
+                return
 
 
 @api_view(['get'])
-def get_ticker(request):
+def get_all_ticker(request):
     spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
     result = spotAPI.get_ticker()
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+@api_view(['get'])
+def get_specific_ticker(request):
+    # instrument_id = request.data.get('instrument_id')
+    instrument_id = request.GET.get('instrument_id')
+    spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
+    result = spotAPI.get_specific_ticker(instrument_id)
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+@api_view(['get'])
+def get_kline(request):
+    # instrument_id = request.data.get('instrument_id')
+    instrument_id = request.GET.get('instrument_id')
+    start = request.GET.get('start')
+    end = request.GET.get('end')
+    granularity = request.GET.get('granularity')
+    spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
+    result = spotAPI.get_kline(instrument_id, granularity)
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
