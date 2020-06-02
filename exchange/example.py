@@ -30,7 +30,7 @@ if __name__ == '__main__':
 # 资金账户API
     accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
     # 资金账户信息 （6次/s）
-    # result = accountAPI.get_wallet()
+    result = accountAPI.get_wallet()
     # 单一币种账户信息 （6次/s）
     # result = accountAPI.get_currency('')
     # 资金划转  (1次/2s)
@@ -111,7 +111,7 @@ if __name__ == '__main__':
     # 公共-获取成交数据 （20次/2s）
     # result = spotAPI.get_deal('', limit='')
     # 公共-获取K线数据 （20次/2s）
-    result = spotAPI.get_kline('BTC-USDT', '')
+    # result = spotAPI.get_kline('BTC-USDT', '')
 
 # level api test
 # 币币杠杆API

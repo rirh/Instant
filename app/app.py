@@ -6,6 +6,13 @@ from rest_framework.decorators import api_view, throttle_classes
 import json
 from app.models import Crypto
 import exchange.okex.spot_api as spot
+import exchange.okex.account_api as account
+import exchange.okex.futures_api as future
+import exchange.okex.lever_api as lever
+import exchange.okex.swap_api as swap
+import exchange.okex.index_api as index
+import exchange.okex.option_api as option
+import exchange.okex.system_api as system
 import time
 from urllib import parse
 # api_key = "105efe25-6f5e-4335-83c6-a11409af7a6b"
@@ -29,13 +36,56 @@ def drug_connect(request):
             except:
                 return
 
+
+@api_view(['get'])
+def get_position_swap(request):
+    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+    result = swapAPI.get_position()
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+@api_view(['get'])
+def get_account_info(request):
+    account_type = request.GET.get('account_type')
+    if account_type == '1':
+        spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
+    # 币币账户信息 （20次/2s）
+        result = spotAPI.get_account_info()
+    elif account_type == '3':
+        futureAPI = future.FutureAPI(api_key, secret_key, passphrase, False)
+        result = futureAPI.get_accounts()
+    elif account_type == '6':
+        accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
+        result = accountAPI.get_wallet()
+    elif account_type == '8':
+        accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
+        result = accountAPI.get_wallet()
+    elif account_type == '9':
+        swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+        result = swapAPI.get_accounts()
+    elif account_type == '16':
+        swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+        result = swapAPI.get_accounts()
+    else:
+        request = ''
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+@api_view(['get'])
+def get_asset_valuation(request):
+    accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
+    result = accountAPI.get_asset_valuation(0, 'USD')
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
 @api_view(['get'])
 def get_depth(request):
     instrument_id = request.GET.get('instrument_id')
     size = request.GET.get('size')
     spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
-    result = spotAPI.get_depth(instrument_id,size)
+    result = spotAPI.get_depth(instrument_id, size)
     return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 @api_view(['get'])
 def get_all_ticker(request):
