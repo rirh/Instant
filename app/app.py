@@ -29,6 +29,13 @@ def drug_connect(request):
             except:
                 return
 
+@api_view(['get'])
+def get_depth(request):
+    instrument_id = request.GET.get('instrument_id')
+    size = request.GET.get('size')
+    spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
+    result = spotAPI.get_depth(instrument_id,size)
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 @api_view(['get'])
 def get_all_ticker(request):
