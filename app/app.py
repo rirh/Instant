@@ -67,7 +67,7 @@ def get_account_info(request):
         swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
         result = swapAPI.get_accounts()
     else:
-        request = ''
+        request = ({})
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
