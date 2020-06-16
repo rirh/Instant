@@ -21,6 +21,7 @@ urlpatterns = [
     path(r'get_position_swap/', get_position_swap),
     path(r'get_instruments/', get_instruments),
     path(r'get_order_list/', get_order_list),
+    path(r'get_rate/', get_rate),
 
 
 
