@@ -38,6 +38,22 @@ def drug_connect(request):
 
 
 @api_view(['get'])
+def get_order_list(request):
+    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+    instrument_id = request.GET.get('instrument_id')
+    state = request.GET.get('state')
+    result = swapAPI.get_order_list(instrument_id, state)
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+@api_view(['get'])
+def get_instruments(request):
+    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+    result = swapAPI.get_instruments()
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+@api_view(['get'])
 def get_position_swap(request):
     swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
     result = swapAPI.get_position()

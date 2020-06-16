@@ -191,7 +191,7 @@ if __name__ == '__main__':
     # 账单流水查询 （5次/2s）
     # result = futureAPI.get_ledger('')
     # 下单 （60次/2s）
-    # result = futureAPI.take_order('', '', '', '', client_oid='', order_type='0', match_price='0')
+    # result = futureAPI.take_order('EOS-USDT-SWAP', '1', '1', '2', client_oid='tigerzh', order_type='0', match_price='1')
 
     # take orders
     # 批量下单 （30次/2s）
@@ -276,7 +276,7 @@ if __name__ == '__main__':
     # 账单流水查询 （5次/2s）
     # result = swapAPI.get_ledger('')
     # 下单 （40次/2s）
-    # result = swapAPI.take_order('', '', '', '', order_type='0', client_oid='', match_price='0')
+    # result = swapAPI.take_order('EOS-USDT-SWAP', '1', '0.1', '1', order_type='0', client_oid='tigerzh', match_price='0')
     # 批量下单 （20次/2s）
     # result = swapAPI.take_orders('', [
     #         {'client_oid': '', 'type': '', 'price': '', 'size': ''},
@@ -287,7 +287,7 @@ if __name__ == '__main__':
     # 批量撤单 （20次/2s）
     # result = swapAPI.revoke_orders('', ids=['', ''])
     # 获取所有订单列表 （20次/2s）
-    # result = swapAPI.get_order_list('', '')
+    result = swapAPI.get_order_list('', '')
     # 获取订单信息 （10次/2s）
     # result = swapAPI.get_order_info('', '')
     # 获取成交明细 （10次/2s）
