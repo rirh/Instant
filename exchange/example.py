@@ -283,11 +283,11 @@ if __name__ == '__main__':
     #         {'client_oid': '', 'type': '', 'price': '', 'size': ''}
     #     ])
     # 撤单 （40次/2s）
-    # result = swapAPI.revoke_order('', '')
+    result = swapAPI.revoke_order('', 'crypto1594025086')
     # 批量撤单 （20次/2s）
     # result = swapAPI.revoke_orders('', ids=['', ''])
     # 获取所有订单列表 （20次/2s）
-    result = swapAPI.get_order_list('', '')
+    # result = swapAPI.get_order_list('', '')
     # 获取订单信息 （10次/2s）
     # result = swapAPI.get_order_info('', '')
     # 获取成交明细 （10次/2s）

@@ -20,7 +20,7 @@ from urllib import parse
 # passphrase = "0x0001"
 from dwebsocket.decorators import accept_websocket
 @accept_websocket
-def drug_connect(request):
+def crypto_connect(request):
     if request.is_websocket():
         try:
             messages = {
@@ -36,12 +36,37 @@ def drug_connect(request):
             except:
                 return
 
+    # result = swapAPI.take_order('EOS-USDT-SWAP', '1', '0.1', '1', order_type='0', client_oid='tigerzh', match_price='0')
+@api_view(['get'])
+def revoke_order(request):
+    client_oid = request.GET.get('client_oid')
+    print(client_oid)
+    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+    result = swapAPI.revoke_order('', client_oid)
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
+@api_view(['get'])
+def take_order(request):
+    instrument_id = request.GET.get('instrument_id')
+    order_type = request.GET.get('order_type')
+    type = request.GET.get('type')
+    size = request.GET.get('size')
+    match_price = request.GET.get('match_price')
+    price = request.GET.get('price')
+    client_oid = 'crypto'+str(int(time.time()))
+    print(client_oid)
+    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
+    result = swapAPI.take_order(
+        instrument_id, type, price, size, client_oid, order_type, match_price)
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 @api_view(['get'])
 def get_rate(request):
     swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, False)
     result = swapAPI.get_rate()
     return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 @api_view(['get'])
 def get_order_list(request):
